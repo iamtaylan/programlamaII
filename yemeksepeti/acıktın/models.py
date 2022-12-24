@@ -1,39 +1,52 @@
+from django.core import validators
 from django.db import models
 from django.core.validators import MinLengthValidator
-
-# Create your models here.
+from django.db.models.fields import CharField
 
 class Genre(models.Model):
     name = models.CharField(max_length=100)
 
+class Contact(models.Model):
+    address = models.CharField(max_length=200)
+    email = models.EmailField()
+
+
+class Person(models.Model):
+
+    genders = (
+        ('M','Erkek'),
+        ('F','Kadın'),
+    )
+
+    duty_types = (
+        ('1','Görevli'),
+        ('2','Kurucu'),
+        ('3','Müdür'),
+        ('4','Aşçı'),
+    )
+
+    first_name = CharField(max_length=50)
+    last_name = CharField(max_length=50)
+    biography = CharField(max_length=3000)
+    image_name = models.CharField(max_length=50)
+    date_of_birth = models.DateField()
+    gender = models.CharField(max_length=1, choices=genders)
+    duty_type = models.CharField(max_length=1, choices=duty_types)
+    contact = models.OneToOneField(Contact, on_delete=models.CASCADE, null=True, blank=True)
 
 class Restoran(models.Model):
     title = models.CharField(max_length=100)
-    description = models.TextField(validators=[MinLengthValidator(20)])
+    description = models.TextField(validators = [MinLengthValidator(20)])
     image_name = models.CharField(max_length=50)
     image_cover = models.CharField(max_length=50)
     date = models.DateField()
     slug = models.SlugField(unique=True,db_index=True)
-    budget = models.models.DecimalField(max_digits=19, decimal_places=2)
-    open_close = models.CharField(max_length=100)
+    budget = models.DecimalField(max_digits=19,decimal_places=2)
+    acik_kapali = models.CharField(max_length=100)
+    people = models.ManyToManyField(Person)
+    genres = models.ManyToManyField(Genre)
 
-
-class Person(models.Model):
-    genders = (
-        ("M", "Male"),
-        ("F", "Female"),
-    )
-    duty_types = (
-        ("1", "Crew")
-        ("2", "Cast")
-        ("3", "Director")
-        ("4", "Writer")
-    )
-
-    first_name = models.CharField(max_length=50)
-    last_name = models.CharField(max_length=50)
-    biography = models.CharField(max_length=3000)
-    image_name = models.CharField(max_length=50)
-    date_of_birthday = models.DateField()
-    gender = models.CharField(max_length=1, choices=genders)
-    duty_type = models.CharField(max_length=1, choices=duty_types)
+class Video(models.Model):
+    title = models.CharField(max_length=200)
+    url = models.CharField(max_length=200)
+    restoran = models.ForeignKey(Restoran, on_delete=models.CASCADE)
