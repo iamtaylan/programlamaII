@@ -35,6 +35,7 @@ data = {
             "acikKapali": "acik",
             "slug": "menu-3",
             "date": date(1989,5,5)
+            
         },
         {
             "title": "restoran adı 4",
