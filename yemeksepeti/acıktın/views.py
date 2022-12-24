@@ -6,6 +6,7 @@ data = {
         {
             "title": "restoran adı 1",
             "aciklama": "aciklama 1",
+            "coverImage": "cover1.jpg",
             "imageUrl": "m1.jpg",
             "begenme": "64%",
             "oySayi": "9,981",
@@ -17,6 +18,7 @@ data = {
             "title": "restoran adı 2",
             "aciklama": "aciklama 2",
             "imageUrl": "m2.jpg",
+            "coverImage": "cover2.jpg",
             "begenme": "75%",
             "oySayi": "4,712",
             "acikKapali": "acik",
@@ -27,6 +29,7 @@ data = {
             "title": "restoran adı 3",
             "aciklama": "aciklama 3",
             "imageUrl": "m3.jpg",
+            "coverImage": "cover3.jpg",
             "begenme": "91%",
             "oySayi": "29,426",
             "acikKapali": "acik",
@@ -37,32 +40,13 @@ data = {
             "title": "restoran adı 4",
             "aciklama": "aciklama 4",
             "imageUrl": "m4.jpg",
+            "coverImage": "cover1.jpg",
             "begenme": "87%",
             "oySayi": "12,492",
             "acikKapali": "acik",
             "slug": "menu-4",
             "date": date(2012,12,4)
         },
-        {
-            "title": "restoran adı 5",
-            "aciklama": "aciklama 5",
-            "imageUrl": "m3.jpg",
-            "begenme": "36%",
-            "oySayi": "17,426",
-            "acikKapali": "acik",
-            "slug": "menu-5",
-            "date": date(2016,2,13)
-        },
-        {
-            "title": "restoran adı 6",
-            "aciklama": "aciklama 6",
-            "imageUrl": "m4.jpg",
-            "begenme": "48%",
-            "oySayi": "3,492",
-            "acikKapali": "acik",
-            "slug": "menu-6",
-            "date": date(2001,4,1)
-        }
     ],
     "sliders":[ 
         {
@@ -102,6 +86,13 @@ def restoranlar(request):
     })
         
 def menuler(request, slug):
+    restoranlar = data["restoranlar"]
+
+    selectedRestoran = None
+    for restoran in restoranlar:
+        if restoran["slug"] == slug:
+            selectedRestoran = restoran
+
     return render(request,'menuler.html', {
-        slug:slug
+        "restoran":selectedRestoran
     })
