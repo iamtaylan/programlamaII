@@ -42,6 +42,26 @@ data = {
             "acikKapali": "acik",
             "slug": "menu-4",
             "date": date(2012,12,4)
+        },
+        {
+            "title": "restoran adı 5",
+            "aciklama": "aciklama 5",
+            "imageUrl": "m3.jpg",
+            "begenme": "36%",
+            "oySayi": "17,426",
+            "acikKapali": "acik",
+            "slug": "menu-5",
+            "date": date(2016,2,13)
+        },
+        {
+            "title": "restoran adı 6",
+            "aciklama": "aciklama 6",
+            "imageUrl": "m4.jpg",
+            "begenme": "48%",
+            "oySayi": "3,492",
+            "acikKapali": "acik",
+            "slug": "menu-6",
+            "date": date(2001,4,1)
         }
     ],
     "slider": [],
@@ -55,14 +75,17 @@ data = {
 # Create your views here.
 
 def index(request):
-    restoranlar = data["restoranlar"]
+    restoranlar = data["restoranlar"][0:4]
     return render(request,'index.html', {
         "restoranlar": restoranlar,
     })
 
 def restoranlar(request):
-    return render(request,'restoranlar.html')
-
+    restoranlar = data["restoranlar"]
+    return render(request,'restoranlar.html',{
+        "restoranlar": restoranlar,
+    })
+        
 def menuler(request, slug):
     return render(request,'menuler.html', {
         slug:slug
