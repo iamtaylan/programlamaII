@@ -64,7 +64,20 @@ data = {
             "date": date(2001,4,1)
         }
     ],
-    "slider": [],
+    "sliders":[ 
+        {
+            "slider_image": "slider1.jpg",
+            "slider_url": "menu-1"
+        },
+        {
+            "slider_image": "slider2.jpg",
+            "slider_url": "menu-2"
+        },
+        {
+            "slider_image": "slider3.jpg",
+            "slider_url": "menu-3"
+        },
+    ],
 
 
 }
@@ -76,8 +89,10 @@ data = {
 
 def index(request):
     restoranlar = data["restoranlar"][0:4]
+    sliders = data["sliders"]
     return render(request,'index.html', {
         "restoranlar": restoranlar,
+        "sliders": sliders
     })
 
 def restoranlar(request):
