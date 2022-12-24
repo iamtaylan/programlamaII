@@ -4,9 +4,9 @@ from acıktın.models import *
 # Register your models here.
 
 class RestoranAdmin(admin.ModelAdmin):
-    list_display = ('title',)
+    list_display = ('title',"is_active","is_home",)
     prepopulated_fields = {'slug': ('title',) }
-    list_filter = ('genres','language',)
+    list_filter = ('genres','language',"is_active","is_home",)
     search_fields = ('title','description',)
 
 class PersonAdmin(admin.ModelAdmin):
