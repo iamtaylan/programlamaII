@@ -35,7 +35,7 @@ def restoranlar(request):
     return render(request,'restoranlar.html',{
         "restoranlar": restoranlar,
     })
-        
+
 def menuler(request, slug):
 
     restoran = get_object_or_404(Restoran, slug=slug)
