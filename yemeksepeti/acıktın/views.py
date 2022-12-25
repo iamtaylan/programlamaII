@@ -1,6 +1,7 @@
 from datetime import date
 from django.shortcuts import get_object_or_404, render
 from acıktın.models import *
+from acıktın.forms import CommentForm
 
 data = {
     "sliders":[ 
@@ -37,12 +38,13 @@ def restoranlar(request):
     })
 
 def menuler(request, slug):
-
     restoran = get_object_or_404(Restoran, slug=slug)
+    comment_form = CommentForm()
 
     return render(request,'menuler.html', {
         "restoran":restoran,
         "genres": restoran.genres.all(),
         "person": restoran.people.all(),
-        "videos": restoran.video_set.all()
+        "videos": restoran.video_set.all(),
+        "comment_form": comment_form
     })

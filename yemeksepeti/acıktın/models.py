@@ -1,7 +1,8 @@
 from django.core import validators
 from django.db import models
-from django.core.validators import MinLengthValidator
+from django.core.validators import MaxLengthValidator, MinLengthValidator
 from django.db.models.fields import CharField
+from django.core.validators import MinLengthValidator, MaxLengthValidator
 
 class Genre(models.Model):
     name = models.CharField(max_length=100)
@@ -74,6 +75,16 @@ class Restoran(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Comment(models.Model):
+    full_name = models.CharField(max_length=100)
+    email = models.EmailField(default="")
+    text = models.TextField(max_length=500)
+    rating = models.IntegerField(null=True)
+    restoran = models.ForeignKey(Restoran, on_delete=models.CASCADE, related_name="comments")
+
+
 
 class Video(models.Model):
     title = models.CharField(max_length=200)
