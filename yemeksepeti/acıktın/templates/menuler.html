@@ -3,7 +3,7 @@
 {% load static %} 
 {% block css_files %} {%endblock %} 
 
-{% block page_title %} Movies {% endblock %} 
+{% block page_title %} Menüler {% endblock %} 
 
 {% block content %}
 
@@ -42,7 +42,7 @@
             <div class="bg-white p-3 widget shadow rounded mb-4">
               <img src="{% static 'img/'|add:restoran.image_name %}" class="img-fluid rounded" alt="..." />
               <h1 class="h6 mb-0 mt-3 font-weight-bold text-gray-900">
-                Director
+                Kurucu
               </h1>
               <p>Jon Watts</p>
             </div>
@@ -82,7 +82,7 @@
                     href="#"
                     class="d-sm-inline-block btn btn-danger shadow-sm"
                   >
-                    Add to Watchlist <i class="fas fa-plus fa-sm ml-1"></i
+                    Beğenilen Restoranlara Ekle <i class="fas fa-plus fa-sm ml-1"></i
                   ></a>
                 </div>
               </div>
@@ -131,7 +131,7 @@
                     role="tab"
                     aria-controls="home"
                     aria-selected="true"
-                    >Summary</a
+                    >Açıklama</a
                   >
                 </li>
                 <li class="nav-item">
@@ -143,7 +143,7 @@
                     role="tab"
                     aria-controls="profile"
                     aria-selected="false"
-                    >Cast
+                    >Çalışanlar
                   </a>
                 </li>
                 <li class="nav-item">
@@ -155,7 +155,7 @@
                     role="tab"
                     aria-controls="videos"
                     aria-selected="false"
-                    >Videos
+                    >Videolar
                   </a>
                 </li>
                 <li class="nav-item">
@@ -167,7 +167,7 @@
                     role="tab"
                     aria-controls="contact"
                     aria-selected="false"
-                    >Reviews</a
+                    >Yorumlar</a
                   >
                 </li>
               </ul>
@@ -188,7 +188,7 @@
                   <div class="row">
                     <div class="col-xl-4 col-lg-4">
                       <h5 class="h6 mt-0 mb-3 font-weight-bold text-gray-900">
-                        CAST
+                        Yönetim
                       </h5>
                       <div class="artist-list mb-3">
                         <a class="d-flex align-items-center" href="#">
@@ -257,7 +257,7 @@
                     </div>
                     <div class="col-xl-4 col-lg-4">
                       <h5 class="h6 mt-0 mb-3 font-weight-bold text-gray-900">
-                        CREW
+                        Garson
                       </h5>
                       <div class="artist-list mb-3">
                         <a class="d-flex align-items-center" href="#">
@@ -326,7 +326,7 @@
                     </div>
                     <div class="col-xl-4 col-lg-4">
                       <h5 class="h6 mt-0 mb-3 font-weight-bold text-gray-900">
-                        Support
+                        Aşçı
                       </h5>
                       <div class="artist-list mb-3">
                         <a class="d-flex align-items-center" href="#">
@@ -601,13 +601,13 @@
                     </div>
                   </div>
                   <div class="p-4 bg-light rounded mt-4">
-                    <h5 class="card-title mb-4">Leave a Review</h5>
+                    <h5 class="card-title mb-4">Yorum Bırak</h5>
                     <form name="sentMessage">
                       <div class="row">
                         <div class="control-group form-group col-lg-4 col-md-4">
                           <div class="controls">
                             <label
-                              >Your Name
+                              >Adınız
                               <span class="text-danger">*</span></label
                             >
                             <input
@@ -620,7 +620,7 @@
                         <div class="control-group form-group col-lg-4 col-md-4">
                           <div class="controls">
                             <label
-                              >Your Email
+                              >Email Adresiniz
                               <span class="text-danger">*</span></label
                             >
                             <input
@@ -633,7 +633,7 @@
                         <div class="control-group form-group col-lg-4 col-md-4">
                           <div class="controls">
                             <label
-                              >Rating <span class="text-danger">*</span></label
+                              >Oy <span class="text-danger">*</span></label
                             >
                             <select class="form-control custom-select">
                               <option>1 Star</option>
@@ -648,7 +648,7 @@
                       <div class="control-group form-group">
                         <div class="controls">
                           <label
-                            >Review <span class="text-danger">*</span></label
+                            >Yorumunuz <span class="text-danger">*</span></label
                           >
                           <textarea
                             rows="3"
@@ -659,7 +659,7 @@
                       </div>
                       <div class="text-right">
                         <button type="submit" class="btn btn-primary">
-                          Send Message
+                          Yorum Yolla
                         </button>
                       </div>
                     </form>

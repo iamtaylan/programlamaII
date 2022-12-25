@@ -5,16 +5,16 @@ from acıktın.models import *
 data = {
     "sliders":[ 
         {
-            "slider_image": "slider1.jpg",
-            "slider_url": "menu-1"
+            "slider_image": "sushicoS.jpg",
+            "slider_url": "sushico"
         },
         {
-            "slider_image": "slider2.jpg",
-            "slider_url": "menu-2"
+            "slider_image": "DominosS.webp",
+            "slider_url": "dominos"
         },
         {
-            "slider_image": "slider3.jpg",
-            "slider_url": "menu-3"
+            "slider_image": "BurgerKingS.webp",
+            "slider_url": "burger"
             
         },
     ],
@@ -39,7 +39,6 @@ def restoranlar(request):
 def menuler(request, slug):
 
     restoran = get_object_or_404(Restoran, slug=slug)
-
 
     return render(request,'menuler.html', {
         "restoran":restoran,

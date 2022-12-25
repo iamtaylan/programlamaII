@@ -16,31 +16,25 @@
     <li class="nav-item active">
       <a class="nav-link" href="{% url 'restoran_page' %}">
         <i class="fas fa-fw fa-film"></i>
-        <span>Movies</span></a
+        <span>Restoranlar</span></a
       >
     </li>
     <li class="nav-item">
       <a class="nav-link" href="events.html">
         <i class="fas fa-fw fa-glass-cheers"></i>
-        <span>Events</span></a
+        <span>Kampanyalar</span></a
       >
     </li>
     <li class="nav-item">
       <a class="nav-link" href="people.html">
         <i class="fas fa-fw fa-users"></i>
-        <span>People</span></a
-      >
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="sports.html">
-        <i class="fas fa-fw fa-futbol"></i>
-        <span>Sports</span></a
+        <span>İnsanlar</span></a
       >
     </li>
 
     <hr class="sidebar-divider" />
 
-    <div class="sidebar-heading">Extra</div>
+    <div class="sidebar-heading">Ekstra</div>
 
     <li class="nav-item">
       <a
@@ -52,7 +46,7 @@
         aria-controls="collapseTwo"
       >
         <i class="fas fa-fw fa-pager"></i>
-        <span>Pages</span>
+        <span>Sayfalar</span>
       </a>
       <div
         id="collapseTwo"
@@ -61,23 +55,12 @@
         data-parent="#accordionSidebar"
       >
         <div class="bg-white py-2 collapse-inner rounded">
-          <h6 class="collapse-header">All Pages</h6>
-          <a class="collapse-item" href="movies.html">Movies</a>
-          <a class="collapse-item" href="movies-detail.html">Movie Detail</a>
-          <a class="collapse-item" href="events.html">Events</a>
-          <a class="collapse-item" href="events-detail.html">Event Detail</a>
-          <a class="collapse-item" href="people.html">People</a>
-          <a class="collapse-item" href="people-detail.html">People Detail</a>
-          <a class="collapse-item" href="sports.html">Sports</a>
-          <a class="collapse-item" href="sports-detail.html">Sport Detail</a>
+          <h6 class="collapse-header">Tüm Sayfalar</h6>
+          <a class="collapse-item" href="{% url 'restoran_page' %}">Restoranlar</a>
+          <a class="collapse-item" href="events.html">Kampanyalar</a>
+          <a class="collapse-item" href="people.html">İnsanlar</a>
         </div>
       </div>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="offers.html">
-        <i class="fas fa-fw fa-fire"></i>
-        <span>Offers</span></a
-      >
     </li>
     <li class="nav-item">
       <a
@@ -89,7 +72,7 @@
         aria-controls="collapsePages"
       >
         <i class="fas fa-fw fa-clone"></i>
-        <span>Extra Pages</span>
+        <span>Ekstra Sayfalar</span>
       </a>
       <div
         id="collapsePages"
@@ -98,16 +81,16 @@
         data-parent="#accordionSidebar"
       >
         <div class="bg-white py-2 collapse-inner rounded">
-          <h6 class="collapse-header">Login Screens:</h6>
-          <a class="collapse-item" href="login.html">Login</a>
-          <a class="collapse-item" href="register.html">Register</a>
+          <h6 class="collapse-header">Giriş Ekranı:</h6>
+          <a class="collapse-item" href="login.html">Giriş Yap</a>
+          <a class="collapse-item" href="register.html">Kayıt Ol</a>
           <a class="collapse-item" href="forgot-password.html"
-            >Forgot Password</a
+            >Şifremi Unuttum</a
           >
           <div class="collapse-divider"></div>
-          <h6 class="collapse-header">Other Pages:</h6>
-          <a class="collapse-item" href="404.html">404 Page</a>
-          <a class="collapse-item" href="blank.html">Blank Page</a>
+          <h6 class="collapse-header">Ekstra Sayfalar:</h6>
+          <a class="collapse-item" href="404.html">404 Sayfası</a>
+          <a class="collapse-item" href="blank.html">Boş Sayfa</a>
         </div>
       </div>
     </li>

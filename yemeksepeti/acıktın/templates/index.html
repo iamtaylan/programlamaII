@@ -11,7 +11,7 @@
   href="{% static 'vendor/slick/slick-theme.min.css' %}"
 />
 
-{% endblock %} {% block page_title %} Index {% endblock %} {% block content %}
+{% endblock %} {% block page_title %} Acıktın {% endblock %} {% block content %}
 
 <div id="wrapper">
   {% include 'partials/_sidebar.html' %}
@@ -25,9 +25,9 @@
         {% include 'partials/_slider.html' %}
 
         <div class="d-sm-flex align-items-center justify-content-between mt-4 mb-3">
-          <h1 class="h5 mb-0 text-gray-900">Movies</h1>
-          <a href="movies.html" class="d-none d-sm-inline-block text-xs"
-            >View All <i class="fas fa-eye fa-sm"></i
+          <h1 class="h5 mb-0 text-gray-900">Restoranlar</h1>
+          <a href="{% url 'restoran_page' %}" class="d-none d-sm-inline-block text-xs"
+            >Hepsini Gör <i class="fas fa-eye fa-sm"></i
           ></a>
         </div>
 
