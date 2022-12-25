@@ -42,5 +42,7 @@ def menuler(request, slug):
 
     return render(request,'menuler.html', {
         "restoran":restoran,
-        "genres": restoran.genres.all()
+        "genres": restoran.genres.all(),
+        "person": restoran.people.all(),
+        "videos": restoran.video_set.all()
     })
