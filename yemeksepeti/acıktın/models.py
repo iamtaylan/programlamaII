@@ -78,9 +78,9 @@ class Restoran(models.Model):
 
 
 class Comment(models.Model):
-    full_name = models.CharField(max_length=100, default=None)
-    email = models.EmailField(default=None)
-    text = models.TextField(max_length=500, default=None)
+    full_name = models.CharField(max_length=100)
+    email = models.EmailField(default="")
+    text = models.TextField(max_length=500)
     rating = models.IntegerField(null=True)
     restoran = models.ForeignKey(Restoran, on_delete=models.CASCADE, related_name="comments")
 
