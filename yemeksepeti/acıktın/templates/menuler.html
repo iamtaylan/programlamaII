@@ -3,7 +3,7 @@
 {% load static %} 
 {% block css_files %} {%endblock %} 
 
-{% block page_title %} Menüler {% endblock %} 
+{% block page_title %} Movies {% endblock %} 
 
 {% block content %}
 
@@ -18,94 +18,67 @@
         <div class="row">
           <div class="col-xl-12 col-lg-12">
             <div class="cover-pic">
-              <div
-                class="
-                  position-absolute
-                  bg-white
-                  shadow-sm
-                  rounded
-                  text-center
-                  p-2
-                  m-4
-                  love-box
-                "
-              >
+              <div class="position-absolute bg-white shadow-sm rounded text-center p-2 m-4 love-box">
                 <h6 class="text-gray-900 mb-0 font-weight-bold">
                   <i class="fas fa-heart text-danger"></i> 50%
                 </h6>
                 <small class="text-muted">8,784</small>
               </div>
-              <img src="{% static 'img/'|add:restoran.image_cover %}" class="img-fluid" alt="..." />
+              <img src="{{ movie.image_cover.url }}" class="img-fluid" alt="..." />
             </div>
           </div>
           <div class="col-xl-3 col-lg-3">
             <div class="bg-white p-3 widget shadow rounded mb-4">
-              <img src="{% static 'img/'|add:restoran.image_name %}" class="img-fluid rounded" alt="..." />
-
+              <img src="{{ movie.image_name.url }}" class="img-fluid rounded" alt="..." />
+             
               <p>
                 {% for person in people %}
-                  {% if person.duty_type == "2" %}
-                    {{person.full_name}}
+                  {% if person.duty_type == "3" %}
+                     <h1 class="h6 mb-0 mt-3 font-weight-bold text-gray-900">
+                        Director
+                    </h1>
+                    <p>{{ person.full_name }}</p>
                   {% endif %}
                 {% endfor %}
-              </p>
+              </p>              
             </div>
           </div>
           <div class="col-xl-9 col-lg-9">
             <div class="bg-white info-header shadow rounded mb-4">
               <div
-                class="
-                  row
-                  d-flex
-                  align-items-center
-                  justify-content-between
-                  p-3
-                  border-bottom
-                "
-              >
+                class="row d-flex align-items-center justify-content-between p-3 border-bottom">
                 <div class="col-lg-7 m-b-4">
                   <h3 class="text-gray-900 mb-0 mt-0 font-weight-bold">
-                    {{restoran.title}}
+                    {{ movie.title }}
                   </h3>
                   <p class="mb-0 text-gray-800">
                     <small class="text-muted">
                       <i class="fas fa-film fa-fw fa-sm mr-1"></i>
-                      {% for genre in genres %}
-                        / {{genre.name}}
-                      {% endfor %}
+                        {% for genre in genres %}
+                          / {{ genre.name }}
+                        {% endfor %}
                     </small>
                   </p>
                 </div>
                 <div class="col-lg-5 text-right">
                   <a
                     href="#"
-                    class="d-sm-inline-block btn btn-primary shadow-sm"
-                    ><i class="fas fa-share-alt"></i
-                  ></a>
+                    class="d-sm-inline-block btn btn-primary shadow-sm"><i class="fas fa-share-alt"></i></a>
                   <a
                     href="#"
                     class="d-sm-inline-block btn btn-danger shadow-sm"
                   >
-                    Beğenilen Restoranlara Ekle <i class="fas fa-plus fa-sm ml-1"></i
+                    Add to Watchlist <i class="fas fa-plus fa-sm ml-1"></i
                   ></a>
                 </div>
               </div>
+
               <div
-                class="
-                  row
-                  d-flex
-                  align-items-center
-                  justify-content-between
-                  py-3
-                  px-4
-                "
-              >
+                class="row d-flex align-items-center justify-content-between py-3 px-4">
                 <div class="col-lg-6 m-b-4">
                   <p class="mb-0 text-gray-900">
-                    <i class="fas fa-money-bill fa-sm fa-fw mr-1"></i> Ortalama Fiyat -
-                    <span class="text-white rounded px-2 py-1 bg-info"
-                      >TL {{restoran.budget|floatformat:0}}</span
-                    >
+                    <i class="fas fa-money-bill fa-sm fa-fw mr-1"></i> Filmin Bütçesi -
+                    <span class="text-white rounded px-2 py-1 bg-info">$ {{ movie.budget|floatformat:0 }}</span>
                   </p>
                 </div>
                 <div class="col-lg-6 text-right">
@@ -135,7 +108,7 @@
                     role="tab"
                     aria-controls="home"
                     aria-selected="true"
-                    >Açıklama</a
+                    >Summary</a
                   >
                 </li>
                 <li class="nav-item">
@@ -147,7 +120,7 @@
                     role="tab"
                     aria-controls="profile"
                     aria-selected="false"
-                    >Çalışanlar
+                    >Cast
                   </a>
                 </li>
                 <li class="nav-item">
@@ -159,7 +132,7 @@
                     role="tab"
                     aria-controls="videos"
                     aria-selected="false"
-                    >Videolar
+                    >Videos
                   </a>
                 </li>
                 <li class="nav-item">
@@ -171,7 +144,7 @@
                     role="tab"
                     aria-controls="contact"
                     aria-selected="false"
-                    >Yorumlar</a
+                    >Reviews</a
                   >
                 </li>
               </ul>
@@ -181,7 +154,7 @@
                   id="home"
                   role="tabpanel"
                   aria-labelledby="home-tab">
-                  {{restoran.description}}
+                  {{ movie.description|safe }}
                 </div>
                 <div
                   class="tab-pane fade"
@@ -189,51 +162,28 @@
                   role="tabpanel"
                   aria-labelledby="profile-tab">
                   <h5 class="h6 mt-0 mb-3 font-weight-bold text-gray-900">
-                    Yönetim
-                  </h5>
+                        CAST
+                    </h5>
                   <div class="row">
 
-                      {% for person in people %}
+                    {% for person in people %}
                       {% if person.duty_type == "2" %}
-
-                        <div class="artist-list mb-3 col-3">
-                          <a class="d-flex align-items-center" href="#">
-                            <div class="dropdown-list-image mr-3">
-                              <img
-                                class="rounded-circle"
-                                src="{% static 'img/'|add:person.image_name %}"
-                                alt=""
-                              />
-                              <div class="status-indicator bg-success"></div>
-                            </div>
-                            <div class="font-weight-bold">
-                              <div class="text-truncate">{{person.full_name}}</div>
-                              <div class="small text-gray-500">Kurucu</div>
-                            </div>
-                          </a>
-                        </div>
-
-                      {% endif %}
-                      {% endfor %}
-                      
-                      <div class="artist-list mb-3 col-3">
-                        <a class="d-flex align-items-center" href="#">
-                          <div class="dropdown-list-image mr-3">
-                            <img
-                              class="rounded-circle"
-                              src="{% static 'img/s1.png' %}"
-                              alt=""
-                            />
-                            <div class="status-indicator bg-success"></div>
+                           <div class="artist-list mb-3 col-3">
+                              <a class="d-flex align-items-center" href="#">
+                                <div class="dropdown-list-image mr-3">
+                                  <img class="rounded-circle" src="{% static 'img/'|add:person.image_name %}" alt=""/>
+                                  <div class="status-indicator bg-success"></div>
+                                </div>
+                                <div class="font-weight-bold">
+                                  <div class="text-truncate">{{ person.full_name }}</div>
+                                  <div class="small text-gray-500">Acting</div>
+                                </div>
+                              </a>
                           </div>
-                          <div class="font-weight-bold">
-                            <div class="text-truncate">Carla Gugino</div>
-                            <div class="small text-gray-500">Acting</div>
-                          </div>
-                        </a>
-                      </div>
-
-
+                      {% endif %}                    
+                    {% endfor %}                
+                  
+                  
                   </div>
                 </div>
                 <div
@@ -242,209 +192,30 @@
                   role="tabpanel"
                   aria-labelledby="videos-tab">
                   <div class="row">
-                    {% for video in videos %}
-                    
-                      <div class="col-xl-6 col-lg-6">
-                        <div class="mb-4">
-                          <iframe
-                            width="100%"
-                            height="215"
-                            src="https://www.youtube.com/embed/{{video.url}}"
-                            frameborder="0"
-                            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                            allowfullscreen=""
-                          ></iframe>
-                        </div>
-                      </div>
-                      
-                    {% endfor %}
 
+                      {% for video in videos %}
+                          <div class="col-xl-6 col-lg-6">
+                            <div class="mb-4">
+                              <iframe
+                                width="100%"
+                                height="215"
+                                src="https://www.youtube.com/embed/{{ video.url }}"
+                                frameborder="0"
+                                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen=""
+                              ></iframe>
+                            </div>
+                          </div>
+                      
+                      {% endfor %}
                   </div>
                 </div>
-                <div
-                  class="tab-pane fade"
-                  id="contact"
-                  role="tabpanel"
-                  aria-labelledby="contact-tab"
-                >
+                <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
                   <div class="card-body p-0 reviews-card">
-                    <div class="media mb-4">
-                      <img
-                        class="d-flex mr-3 rounded-circle"
-                        src="img/s1.png"
-                        alt=""
-                      />
-                      <div class="media-body">
-                        <div class="mt-0 mb-1">
-                          <span class="h6 mr-2 font-weight-bold text-gray-900"
-                            >Stave Martin</span
-                          >
-                          <span
-                            ><i class="fa fa-calendar"></i> Feb 12, 2018</span
-                          >
-                          <div class="stars-rating float-right">
-                            <i class="fa fa-star active"></i>
-                            <i class="fa fa-star active"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <span class="rounded bg-warning text-dark pl-1 pr-1"
-                              >5/3</span
-                            >
-                          </div>
-                        </div>
-                        <p>
-                          Cras sit amet nibh libero, in gravida nulla. Nulla vel
-                          metus scelerisque ante sollicitudin. Cras purus odio,
-                          vestibulum in vulputate at, tempus viverra turpis.
-                          Fusce condimentum nunc ac nisi vulputate fringilla.
-                          Donec lacinia congue felis in faucibus.
-                        </p>
-                      </div>
-                    </div>
-                    <div class="media">
-                      <img
-                        class="d-flex mr-3 rounded-circle"
-                        src="img/s2.png"
-                        alt=""
-                      />
-                      <div class="media-body">
-                        <div class="mt-0 mb-1">
-                          <span class="h6 mr-2 font-weight-bold text-gray-900"
-                            >Mark Smith</span
-                          >
-                          <span
-                            ><i class="fa fa-calendar"></i> Feb 12, 2018</span
-                          >
-                          <div class="stars-rating float-right">
-                            <i class="fa fa-star active"></i>
-                            <i class="fa fa-star active"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <span class="rounded bg-warning text-dark pl-1 pr-1"
-                              >5/3</span
-                            >
-                          </div>
-                        </div>
-                        <p>
-                          Cras sit amet nibh libero, in gravida nulla. Nulla vel
-                          metus scelerisque ante sollicitudin. Cras purus odio,
-                          vestibulum in vulputate at, tempus viverra turpis.
-                          Fusce condimentum nunc ac nisi vulputate fringilla.
-                          Donec lacinia congue felis in faucibus.
-                        </p>
-                        <div class="media mt-4">
-                          <img
-                            class="d-flex mr-3 rounded-circle"
-                            src="img/s3.png"
-                            alt=""
-                          />
-                          <div class="media-body">
-                            <div class="mt-0 mb-1">
-                              <span
-                                class="h6 mr-2 font-weight-bold text-gray-900"
-                                >Ryan Printz</span
-                              >
-                              <span
-                                ><i class="fa fa-calendar"></i> Feb 12,
-                                2018</span
-                              >
-                              <div class="stars-rating float-right">
-                                <i class="fa fa-star active"></i>
-                                <i class="fa fa-star active"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <span
-                                  class="rounded bg-warning text-dark pl-1 pr-1"
-                                  >5/3</span
-                                >
-                              </div>
-                            </div>
-                            <p>
-                              Cras sit amet nibh libero, in gravida nulla. Nulla
-                              vel metus scelerisque ante sollicitudin. Cras
-                              purus odio, vestibulum in vulputate at, tempus
-                              viverra turpis. Fusce condimentum nunc ac nisi
-                              vulputate fringilla. Donec lacinia congue felis in
-                              faucibus.
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="media mt-4">
-                      <img
-                        class="d-flex mr-3 rounded-circle"
-                        src="img/s4.png"
-                        alt=""
-                      />
-                      <div class="media-body">
-                        <div class="mt-0 mb-1">
-                          <span class="h6 mr-2 font-weight-bold text-gray-900"
-                            >Stave Mark</span
-                          >
-                          <span
-                            ><i class="fa fa-calendar"></i> Feb 12, 2018</span
-                          >
-                          <div class="stars-rating float-right">
-                            <i class="fa fa-star active"></i>
-                            <i class="fa fa-star active"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <span class="rounded bg-warning text-dark pl-1 pr-1"
-                              >5/3</span
-                            >
-                          </div>
-                        </div>
-                        <p class="mb-0">
-                          Cras sit amet nibh libero, in gravida nulla. Nulla vel
-                          metus scelerisque ante sollicitudin. Cras purus odio,
-                          vestibulum in vulputate at, tempus viverra turpis.
-                          Fusce condimentum nunc ac nisi vulputate fringilla.
-                          Donec lacinia congue felis in faucibus.
-                        </p>
-                      </div>
-                    </div>
+                    {% include 'partials/_comment-list.html' %}
                   </div>
                   <div class="p-4 bg-light rounded mt-4">
-                    <h5 class="card-title mb-4">Yorum Bırak</h5>
-                    <form action="{% url 'menuler_name' restoran.slug %}" method="POST" novalidate> 
-                      {% csrf_token %}
-                        <div class="row">
-                        <div class="control-group form-group col-lg-4 col-md-4">
-                          <div class="controls">
-                            <label>{{comment_form.full_name.label}}<span class="text-danger">*</span></label>
-                            {{comment_form.full_name}}
-                          </div>
-                        </div>
-                        <div class="control-group form-group col-lg-4 col-md-4">
-                          <div class="controls">
-                            <label>{{comment_form.email.label}}<span class="text-danger">*</span></label>
-                            {{comment_form.email}}
-                          </div>
-                        </div>
-                        <div class="control-group form-group col-lg-4 col-md-4">
-                          <div class="controls">
-                            <label>{{comment_form.rating.label}} <span class="text-danger">*</span></label>
-                            {{comment_form.rating}}
-                          </div>
-                        </div>
-                      </div>
-                      <div class="control-group form-group">
-                        <div class="controls">
-                          <label>{{comment_form.text.label}} <span class="text-danger">*</span></label>
-                          {{comment_form.text}}
-                        </div>
-                      </div>
-                      <div class="text-right">
-                        <button type="submit" class="btn btn-primary">
-                          Yorum Yolla
-                        </button>
-                      </div>
-                    </form>
+                    {% include 'partials/_add_comment.html' %}
                   </div>
                 </div>
               </div>
@@ -457,43 +228,4 @@
    {% include 'partials/_footer.html' %}
   </div>
 </div>
-
-<a class="scroll-to-top rounded" href="#page-top">
-  <i class="fas fa-angle-up"></i>
-</a>
-
-<div
-  class="modal fade"
-  id="logoutModal"
-  tabindex="-1"
-  role="dialog"
-  aria-labelledby="exampleModalLabel"
-  aria-hidden="true"
->
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-        <button
-          class="close"
-          type="button"
-          data-dismiss="modal"
-          aria-label="Close"
-        >
-          <span aria-hidden="true">×</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        Select "Logout" below if you are ready to end your current session.
-      </div>
-      <div class="modal-footer">
-        <button class="btn btn-secondary" type="button" data-dismiss="modal">
-          Cancel
-        </button>
-        <a class="btn btn-primary" href="login.html">Logout</a>
-      </div>
-    </div>
-  </div>
-</div>
-
 {% endblock %}
