@@ -20,19 +20,19 @@
           <a
             href="#"
             class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
-            >Filtreyi Sıfırla <i class="fas fa-times fa-sm text-white-50"></i
+            >Reset Filters <i class="fas fa-times fa-sm text-white-50"></i
           ></a>
         </div>
 
         <div class="row">
           <div class="col">
             <div class="row">
-                
-                {% for restoran in restoranlar %}
-                    <div class="col-xl-4 col-md-6 mb-4">
-                        {% include 'partials/_movie.html' %}
-                    </div>
-                {% endfor %}
+
+              {% for movie in movies %}               
+                <div class="col-xl-4 col-md-6 mb-4">
+                  {% include 'partials/_movie.html' %}
+                </div>
+              {% endfor %}
              
             </div>
             <div class="text-center mt-1 mb-4 col-12">
@@ -49,42 +49,5 @@
   </div>
 </div>
 
-<a class="scroll-to-top rounded" href="#page-top">
-  <i class="fas fa-angle-up"></i>
-</a>
-
-<div
-  class="modal fade"
-  id="logoutModal"
-  tabindex="-1"
-  role="dialog"
-  aria-labelledby="exampleModalLabel"
-  aria-hidden="true"
->
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-        <button
-          class="close"
-          type="button"
-          data-dismiss="modal"
-          aria-label="Close"
-        >
-          <span aria-hidden="true">×</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        Select "Logout" below if you are ready to end your current session.
-      </div>
-      <div class="modal-footer">
-        <button class="btn btn-secondary" type="button" data-dismiss="modal">
-          Cancel
-        </button>
-        <a class="btn btn-primary" href="login.html">Logout</a>
-      </div>
-    </div>
-  </div>
-</div>
 
 {% endblock %}
