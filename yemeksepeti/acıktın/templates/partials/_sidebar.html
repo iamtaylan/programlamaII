@@ -45,6 +45,7 @@
         <div class="bg-white py-2 collapse-inner rounded">
           <h6 class="collapse-header">Tüm Sayfalar</h6>
           <a class="collapse-item" href="{% url 'restoran_page' %}">Restoranlar</a>
+          <a class="collapse-item" href="{% url 'blank_page' %}">Boş Sayfa</a>
         </div>
       </div>
     </li>
@@ -76,7 +77,7 @@
           <div class="collapse-divider"></div>
           <h6 class="collapse-header">Ekstra Sayfalar:</h6>
           <a class="collapse-item" href="404.html">404 Sayfası</a>
-          <a class="collapse-item" href="blank.html">Boş Sayfa</a>
+          <a class="collapse-item" href="{% url 'blank_page' %}">Boş Sayfa</a>
         </div>
       </div>
     </li>

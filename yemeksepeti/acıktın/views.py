@@ -37,6 +37,15 @@ def restoranlar(request):
         "restoranlar": restoranlar,
     })
 
+def tumMenuler(request):
+    restoranlar = Restoran.objects.filter(is_active = True)
+    return render(request, "anamenu.html", {
+        "restoranlar": restoranlar,
+    })
+
+def blank(request):
+    return render(request, "blank.html")
+
 def menuler(request, slug):
     restoran = get_object_or_404(Restoran, slug=slug)
     comment_form = CommentForm()
