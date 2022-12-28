@@ -25,12 +25,9 @@
         </div>
 
         <div class="row">
-          <div class="col">
-            <div class="row">
-                
-                {% for restoran in restoranlar %}
+                {% for menu in menuler %}
                     <div class="col-xl-4 col-md-6 mb-4">
-                        {% include 'partials/menu_movie.html' %}
+                        {% include 'partials/_menu_movie.html' %}
                     </div>
                 {% endfor %}
              

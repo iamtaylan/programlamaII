@@ -37,10 +37,13 @@ def restoranlar(request):
         "restoranlar": restoranlar,
     })
 
-def tumMenuler(request):
+def tumMenuler(request, slug2):
+    menuler = get_object_or_404(Menuler, slug2=slug2)
     restoranlar = Restoran.objects.filter(is_active = True)
+    menuler = Menuler.objects.filter(is_active = True)
     return render(request, "anamenu.html", {
         "restoranlar": restoranlar,
+        "menuler": menuler,
     })
 
 def blank(request):
